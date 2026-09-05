@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0d12">
+<meta name="description" content="Private AI assistant powered by a Python backend">
+<title>Nova AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <div class="brand-logo">✦</div>
+        <div><strong>Nova AI</strong><span>Private Assistant</span></div>
+      </div>
+      <button id="closeSidebar" class="icon-btn mobile-only" aria-label="Close sidebar">×</button>
+    </div>
+
+    <button id="newChatBtn" class="new-chat-btn"><span>＋</span><span>New chat</span></button>
+
+    <div class="search-box">
+      <span>⌕</span>
+      <input id="searchInput" type="search" placeholder="Search chats..." aria-label="Search conversations">
+    </div>
+
+    <div class="history-heading">
+      <span>Conversations</span>
+      <button id="clearHistoryBtn" class="tiny-btn">Clear</button>
+    </div>
+
+    <nav id="conversationList" class="conversation-list" aria-label="Conversation history"></nav>
+
+    <div class="sidebar-bottom">
+      <div class="connection-status">
+        <span id="statusDot" class="status-dot offline"></span>
+        <div><strong id="statusText">Checking service...</strong><small>AI service</small></div>
+      </div>
+      <button id="themeBtn" class="settings-btn"><span id="themeIcon">☾</span><span>Appearance</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button id="openSidebar" class="icon-btn" aria-label="Open sidebar">☰</button>
+      <div class="mobile-title"><div class="mini-logo">✦</div><strong>Nova AI</strong></div>
+      <button id="newChatTop" class="icon-btn" title="New chat" aria-label="New chat">＋</button>
+    </header>
+
+    <section id="chatArea" class="chat-area">
+      <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-logo">✦</div>
+        <h1>How can I help?</h1>
+        <p>Ask questions and interact with your private AI assistant.</p>
+
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Explain Python in simple terms."><span>⌘</span><div><strong>Learn something</strong><small>Explain Python simply</small></div></button>
+          <button class="suggestion" data-prompt="Help me create a study plan for today."><span>◈</span><div><strong>Plan something</strong><small>Create a study plan</small></div></button>
+          <button class="suggestion" data-prompt="Give me five useful programming project ideas."><span>◇</span><div><strong>Get ideas</strong><small>Programming projects</small></div></button>
+          <button class="suggestion" data-prompt="Explain how artificial intelligence works."><span>✧</span><div><strong>Understand AI</strong><small>How artificial intelligence works</small></div></button>
+        </div>
+      </div>
+      <div id="messages" class="messages" aria-live="polite"></div>
+    </section>
+
+    <footer class="composer-wrapper">
+      <div id="errorBanner" class="error-banner" hidden>
+        <span id="errorText"></span>
+        <button id="retryBtn">Retry</button>
+        <button id="dismissError">×</button>
+      </div>
+
+      <form id="chatForm" class="composer">
+        <div class="input-container">
+          <textarea id="messageInput" rows="1" maxlength="12000" placeholder="Message Nova AI..." aria-label="Message Nova AI"></textarea>
+          <div class="composer-bottom">
+            <span id="charCounter">0 / 12,000</span>
+            <div class="composer-actions">
+              <button type="button" id="stopBtn" class="stop-btn" hidden>■ Stop</button>
+              <button type="submit" id="sendBtn" class="send-btn" aria-label="Send message">↑</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <p class="disclaimer">Nova AI can make mistakes. Verify important information.</p>
+    </footer>
+  </main>
+</div>
+
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<div id="contextMenu" class="context-menu" hidden>
+  <button data-action="rename">Rename</button>
+  <button data-action="delete">Delete</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
